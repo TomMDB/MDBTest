@@ -11,38 +11,22 @@
     @RenderSection("css", required: false)
 
 </head>
-<body>
-    <header>
-        <div class="content clearfix">
-            <h1 class="logo">Demo</h1>
-            @if (Request.IsAuthenticated)
-            {
-                <ul class="nav">
-                    <li class="first">
-                        @using (Html.BeginForm("Logout", "Auth", FormMethod.Post, new { id = "logOffForm" }))
-                        {
-                            @Html.AntiForgeryToken()
-                            <button type="submit" id="btnLogin" onclick="return main.logout();" value="Log out">
-                                Log out
-                            </button>
-                        }
-                    </li>
-                    <li class="last">
-                        Hello @User.Identity.GetUserName()
-                    </li>
-                </ul>
-            }
-        </div>
-
-    </header>
+<body>  
     <div class="content">
+        @if (Request.IsAuthenticated)
+        {
+            <br />
+            using (Html.BeginForm("Logout", "Auth", FormMethod.Post, new { id = "logOffForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <button type="submit" id="btnLogin" onclick="return main.logout();" value="Log out">
+                    Log out
+                </button>
+            }            
+        }
+
         @RenderBody()
     </div>
-    <footer>
-        <div class="content">
-            Copyright &copy; 2015
-        </div>
-    </footer>
 
     @Scripts.Render("~/bundles/jquery")
     @RenderSection("script", required: false)
