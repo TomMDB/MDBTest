@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using TechnicalTest.Models;
 
+// a simple change here
 namespace TechnicalTest.Controllers
 {
     public class AuthController : Controller
